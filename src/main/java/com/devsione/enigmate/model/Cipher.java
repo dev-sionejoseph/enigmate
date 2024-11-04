@@ -1,5 +1,8 @@
 package com.devsione.enigmate.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.Set;
 
@@ -18,8 +21,13 @@ public class Cipher {
     private String key;
 
     @ManyToOne
-    @JoinColumn(name = "codemaker", nullable = false)
+    @JoinColumn(name = "codemaker")
+    @JsonBackReference(value = "createdCiphers")
     private User codemaker;
+
+    @OneToMany(mappedBy = "cipher")
+    @JsonIgnore
+    private Set<Message> messages;
 
     @ManyToMany
     @JoinTable(
@@ -27,6 +35,7 @@ public class Cipher {
             joinColumns = @JoinColumn(name = "cipher_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
+    @JsonIgnore
     private Set<User> codebreakers;
 
     // CONSTRUCTORS
@@ -80,5 +89,17 @@ public class Cipher {
 
     public void setCodebreakers(Set<User> codebreakers) {
         this.codebreakers = codebreakers;
+    }
+
+    public void setCodebreaker(User codebreaker) {
+        codebreakers.add(codebreaker);
+    }
+
+    public Set<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(Set<Message> messages) {
+        this.messages = messages;
     }
 }

@@ -1,5 +1,6 @@
 package com.devsione.enigmate.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -13,10 +14,12 @@ public class Message {
     
     @ManyToOne
     @JoinColumn(name = "sender_id", nullable = false)
+    @JsonBackReference(value = "outbox")
     private User sender;
 
     @ManyToOne
     @JoinColumn(name = "receiver_id", nullable = false)
+    @JsonBackReference(value = "inbox")
     private User receiver;
     
     @ManyToOne

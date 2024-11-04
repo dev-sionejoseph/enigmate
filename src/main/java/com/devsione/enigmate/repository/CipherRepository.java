@@ -1,15 +1,13 @@
 package com.devsione.enigmate.repository;
 
-import com.devsione.enigmate.model.User;
+import com.devsione.enigmate.model.Cipher;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface CipherRepository extends CrudRepository<Cipher, Long> {
 
-    Optional<User> findByUsername(String username);
+    Cipher findByName(String name);
 
     void deleteById(Long id);
 }

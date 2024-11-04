@@ -1,5 +1,8 @@
 package com.devsione.enigmate.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.util.Set;
 
 @Entity
@@ -9,21 +12,33 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(min = 4, max = 12)
     @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
+    /*@JsonIgnore*/
     private String password;
 
     @OneToMany(mappedBy = "codemaker")
+    @JsonManagedReference(value = "createdCiphers")
     private Set<Cipher> createdCiphers;
 
     @ManyToMany(mappedBy = "codebreakers")
     private Set<Cipher> permittedCiphers;
 
-    // constructors
+    @OneToMany(mappedBy = "sender")
+    @JsonManagedReference(value = "inbox")
+    private Set<Message> inbox;
 
-    public User(){
+    @OneToMany(mappedBy = "receiver")
+    @JsonManagedReference(value = "outbox")
+    private Set<Message> outbox;
+
+
+// constructors
+
+    public User() {
 
     }
 
@@ -62,8 +77,8 @@ public class User {
         return createdCiphers;
     }
 
-    public void setCreatedCiphers(Set<Cipher> createdCiphers) {
-        this.createdCiphers = createdCiphers;
+    public void setCreatedCiphers(Cipher createdCipher) {
+        createdCiphers.add(createdCipher);
     }
 
     public Set<Cipher> getPermittedCiphers() {
@@ -72,5 +87,21 @@ public class User {
 
     public void setPermittedCiphers(Set<Cipher> permittedCiphers) {
         this.permittedCiphers = permittedCiphers;
+    }
+
+    public Set<Message> getInbox() {
+        return inbox;
+    }
+
+    public void setInbox(Set<Message> inbox) {
+        this.inbox = inbox;
+    }
+
+    public Set<Message> getOutbox() {
+        return outbox;
+    }
+
+    public void setOutbox(Set<Message> outbox) {
+        this.outbox = outbox;
     }
 }

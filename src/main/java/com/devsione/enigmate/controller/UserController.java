@@ -1,29 +1,45 @@
 package com.devsione.enigmate.controller;
 import com.devsione.enigmate.model.User;
-import com.devsione.enigmate.repository.UserRepository;
+import com.devsione.enigmate.service.UserService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("api/users")
+@CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping("")
     List<User> findAll() {
-        return (List<User>) userRepository.findAll();
+        return (List<User>) userService.findAll();
     }
 
     @GetMapping("/{id}")
     Optional<User> findById(@PathVariable Long id) {
-        return userRepository.findById(id);
+        return userService.findById(id);
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/register")
+    void registerUser(@Valid @RequestBody User user) {
+        userService.saveUser(user);
+    }
+
+    @DeleteMapping("/{id}")
+    void delete(@PathVariable Long id){
+        userService.delete(id);
+    }
+
+
 
 
 
