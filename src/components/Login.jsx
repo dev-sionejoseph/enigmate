@@ -47,7 +47,7 @@ const Login = ({ setAuth,setActiveUser }) => {
       }
 
   return (
-    <div className='loginContainer'>
+    <div className='loginContainer main-wrapper'>
         <div className="titleContainer">
             <div className="title">Enigmate</div>
             <div id="tagline">keep the mystery alive</div>

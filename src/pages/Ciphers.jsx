@@ -35,7 +35,7 @@ import Cipher from '../components/Cipher';
 
 
    return (
-     <div>
+     <div className='main-wrapper'>
         <div>
             <div>Ciphers</div>
             <div>

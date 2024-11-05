@@ -31,7 +31,7 @@ function App() {
   
 
   return (
-    <>
+    <main className='app wrap-gradient'>
       {/* <Router> */}
         <Routes>
           <Route exact path="/" element={<Login setAuth={setAuth} setActiveUser={setActiveUser}/>}></Route>
@@ -42,7 +42,7 @@ function App() {
         </Routes>
       {/* </Router> */}
       
-    </>
+    </main>
   )
 }
 
