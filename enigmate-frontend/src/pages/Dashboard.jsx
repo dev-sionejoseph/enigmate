@@ -10,13 +10,35 @@ const Dashboard = ({ setAuth, activeUser }) => {
   return (
     <main className='main-wrapper gradient-overlay'>
         <div className='item-holder'>
-            <div>Dashboard</div>
-            <Link to={`/${username}/inbox`}>
-                <button>Inbox</button>
-            </Link>
-            <Link to={`/${username}/ciphers`}>
-                <button>Ciphers</button>
-            </Link>
+            <div>
+                <div className='logo'>
+                    <img id='icon' src={"icon.png"} alt="enigmate icon" />
+                <   img id='wordmark' src={"wordmark1.png"} alt="" />
+                </div>
+                <div className='title-wrap'>
+                    <h2 id='title'>{activeUser.username.charAt(0).toUpperCase() + activeUser.username.slice(1)}'s Dashboard</h2>
+                    </div>
+            </div>
+            <div id='dash-buttonwrap'>
+                <Link to={`/${username}/inbox`}>
+                    <button className='dash-button'>
+                        <span className="dupe-text">&%j@k</span>
+                        <span className="real-text">Inbox</span>
+                    </button>
+                </Link>
+                <Link to={`/${username}/outbox`}>
+                    <button className='dash-button'>
+                        <span className="dupe-text">Yf^j@k</span>
+                        <span className="real-text">Outbox</span>
+                    </button>
+                </Link>
+                <Link to={`/${username}/ciphers`}>
+                    <button className='dash-button'>
+                        <span className="dupe-text">X$#kE+v</span>
+                        <span className="real-text">Ciphers</span>
+                    </button>
+                </Link>
+            </div>
         </div>
     </main>
   )
