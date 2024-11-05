@@ -53,7 +53,7 @@ const Inbox = ({activeUser}) => {
     }
     
   return (
-    <div>
+    <div className='main-wrapper'>
         <div>
             <div>Inbox</div>
             <div>

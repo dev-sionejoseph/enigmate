@@ -8,8 +8,8 @@ const Dashboard = ({ setAuth, activeUser }) => {
     
     const username = activeUser.username
   return (
-    <main>
-        <div>
+    <main className='main-wrapper gradient-overlay'>
+        <div className='item-holder'>
             <div>Dashboard</div>
             <Link to={`/${username}/inbox`}>
                 <button>Inbox</button>

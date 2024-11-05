@@ -1,9 +1,9 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
+} */
 
 .logo {
   height: 6em;
@@ -39,4 +39,56 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.app{
+  margin: 0 auto;
+  /* padding: 2rem; */
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(46, 26, 65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-wrapper{
+  display: flex;
+  justify-content: center;
+  background-color: rgb(214, 173, 253);
+  height: 90%;
+  width: 80%;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gradient-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-overlay::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.3) 0%,
+    rgba(255,255,255,0.15) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.item-holder{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: lime;
 }
