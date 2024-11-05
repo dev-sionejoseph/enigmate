@@ -12,8 +12,8 @@ const Dashboard = ({ setAuth, activeUser }) => {
         <div className='item-holder'>
             <div>
                 <div className='logo'>
-                    <img id='icon' src={"icon.png"} alt="enigmate icon" />
-                <   img id='wordmark' src={"wordmark1.png"} alt="" />
+                    <img className="icon" id='dash-icon' src={"icon.png"} alt="enigmate icon" />
+                    <img className="wordmark" id='dash-wordmark' src={"wordmark1.png"} alt="" />
                 </div>
                 <div className='title-wrap'>
                     <h2 id='title'>{activeUser.username.charAt(0).toUpperCase() + activeUser.username.slice(1)}'s Dashboard</h2>
