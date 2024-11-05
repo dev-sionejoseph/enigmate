@@ -20,8 +20,18 @@
   width: auto;
 }
 
-#wordmark{
+#dash-wordmark, #login-wordmark{
   height: 90%;
+}
+
+#login-logo{
+  margin-top: 5%;
+  height: 30%;
+}
+
+#login-logo img {
+  height: 100%;
+  width: auto;
 }
 
 .logo:hover {
@@ -104,15 +114,58 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   z-index: 2;
   /* background-color: lime; */
 }
+
+.form-wrap{
+  min-height: 30%;
+  height: auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90%;
+  width: 90%;
+}
+
+#login-form input, .form-btns-wrap {
+  height: 30%;
+  width: 50%;
+  max-height: 30px;
+  border: none;
+}
+
+/* #login-form .form-btns-wrap {
+  height: 30%;
+  width: 50%;
+  max-height: 30px;
+  border: none;
+  background-color: pink;
+} */
+
+#login-form .form-btns-wrap input{
+  max-height: 100%;
+  height: 100%;
+  width: 50%;
+}
+
 
 #dash-buttonwrap{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: 50%;
+  width:90%;
 }
 
 .dash-button{

@@ -47,19 +47,42 @@ const Login = ({ setAuth,setActiveUser }) => {
       }
 
   return (
-    <div className='loginContainer main-wrapper'>
-        <div className="titleContainer">
-            <div className="title">Enigmate</div>
-            <div id="tagline">keep the mystery alive</div>
+    <div className="main-wrapper" id="loginContainer">
+      <div className="item-holder">
+          <div className="logo" id='login-logo'>
+            <img className="icon" id="login-icon" src={"icon.png"} alt="enigmate icon" />
+            <img className="wordmark" id="login-wordmark" src={"wordmark2.png"} alt="" />
+          </div>
+          <div className="title-wrap">
+            <h2 id="title">
+              Login
+            </h2>
+          </div>
+        <div className="form-wrap">
+          <form onSubmit={handleSubmit} className="login-form" id="login-form">
+            <input
+              onChange={handleChange}
+              name="username"
+              placeholder="Username"
+              id="username-input"
+            />
+            <input
+              onChange={handleChange}
+              type="password"
+              placeholder="Password"
+              name="password"
+              id="password-input"
+            />
+            <label className="errorLabel">{loginError}</label>
+            <div className="form-btns-wrap" id="login-form-btns">
+              <input className="form-btns" type="submit" value="Log In" />
+              <input className="form-btns" type="button" value="Sign Up" />
+            </div>
+          </form>
         </div>
-        <form onSubmit={handleSubmit} className="class" id="loginForm">
-            <input onChange={handleChange} name="username" placeholder="Username" id="username-input" />
-            <input onChange={handleChange} type="password" placeholder="Password" name="password" id="password-input" />
-            <label className='errorLabel'>{loginError}</label>
-            <input type="submit" value="Log In" />
-        </form>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Login;
