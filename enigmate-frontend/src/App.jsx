@@ -13,6 +13,7 @@ import {
   import Dashboard from './pages/Dashboard'
   import Inbox from './pages/Inbox'
 import CreateCipher from './components/CreateCipher'
+import Outbox from './pages/Outbox'
 
 function App() {
   const [auth, setAuth] = useState(false)
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/" element={<Login setAuth={setAuth} setActiveUser={setActiveUser}/>}></Route>
           <Route path="/:username" element={<Dashboard auth={auth} setAuth={setAuth} activeUser={activeUser}/>}></Route>
           <Route path="/:username/inbox" element={<Inbox auth={auth} activeUser={activeUser}/>}></Route>
+          <Route path="/:username/outbox" element={<Outbox auth={auth} activeUser={activeUser}/>}></Route>
           <Route path="/:username/ciphers" element={<Ciphers auth={auth} activeUser={activeUser}/>}></Route>
           <Route path="/:username/ciphers/create" element={<CreateCipher auth={auth} activeUser={activeUser}/>}></Route>
         </Routes>

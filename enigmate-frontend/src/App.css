@@ -20,7 +20,7 @@
   width: auto;
 }
 
-#dash-wordmark, #login-wordmark{
+.wordmark{
   height: 90%;
 }
 
@@ -127,6 +127,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  /* background-color: aliceblue; */
   
 }
 
@@ -136,6 +137,11 @@ form {
   align-items: center;
   height: 90%;
   width: 90%;
+  /* background-color: #888; */
+}
+
+form *{
+  box-sizing: border-box;
 }
 
 #login-form input, .form-btns-wrap {
@@ -145,27 +151,25 @@ form {
   border: none;
 }
 
-/* #login-form .form-btns-wrap {
-  height: 30%;
-  width: 50%;
-  max-height: 30px;
-  border: none;
-  background-color: pink;
-} */
-
 #login-form .form-btns-wrap input{
   max-height: 100%;
   height: 100%;
   width: 50%;
 }
 
-
-#dash-buttonwrap{
+.inner-holder{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 50%;
+  height: 80%;
   width:90%;
+  /* background-color: black; */
+  align-items: center;
+}
+
+#dash-buttonwrap{
+  height: 50%;
+  align-items: normal;
+  justify-content: space-around;
 }
 
 .dash-button{
@@ -176,11 +180,11 @@ form {
   cursor: pointer;
 }
 
-.dupe-text {
+.real-text {
   transition: opacity 0.3s ease;
 }
 
-.real-text {
+.dupe-text {
   position: absolute;
   top: 0;
   left: 0;
@@ -190,13 +194,39 @@ form {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.dash-button:hover {
+  border: 0;
+  filter: drop-shadow(0 0 .25em rgba(102, 102, 255, 0.5));
 }
 
 .dash-button:hover .dupe-text{
-  opacity: 0;
+  opacity: 1;
+  filter: blur(2px);
 }
 
 .dash-button:hover .real-text{
-  opacity: 1;
+  opacity: 0;
 }
+
+.map-wrap{
+  height: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  scrollbar-width: none;
+ /*  box-shadow: inset 0 0 .5em rgba(102, 102, 255, 0.25);
+  background-color: aqua; */
+}
+
+.message-item{
+  width: 60%;
+  border-radius: 5px;
+  background-color: white;
+}
+
