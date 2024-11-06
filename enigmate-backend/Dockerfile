@@ -7,7 +7,7 @@ COPY pom.xml /app/
 COPY src /app/src
 
 RUN apt-get update && apt-get install -y maven
-RUN mvn clean install
+RUN mvn clean install -U
 
 EXPOSE 8080
 
