@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import Message from '../components/Message'
 
-const Inbox = ({activeUser}) => {
+const Outbox = ({activeUser}) => {
     const [messages, setMessages] = useState({});
     const [newMessage, setNewMessage] = useState({
         sender: activeUser.username,
@@ -13,9 +13,9 @@ const Inbox = ({activeUser}) => {
     const apiURL = import.meta.env.VITE_API_KEY;
 
     useEffect(() => {
-      async function fetchInbox() {
+    /*   async function fetchOutbox() {
         try {
-            const response = await fetch(`${apiURL}/messages/${activeUser.id}/inbox`, {
+            const response = await fetch(`${apiURL}/messages/${activeUser.id}/outbox`, {
                 method: "GET",
               });
             const data = await response.json();
@@ -26,7 +26,7 @@ const Inbox = ({activeUser}) => {
         }
       }
       
-      fetchInbox();
+      fetchInbox(); */
     }, [])
 
     function handleChange(e) {
@@ -60,10 +60,10 @@ const Inbox = ({activeUser}) => {
                 <img className="wordmark" src={"/wordmark1.png"} alt="enigmate wordmark"/>
             </div>
             <div className='title-wrap'>
-                <h2 id='title'>Inbox</h2>
+                <h2 id='title'>Outbox</h2>
             </div>
-            <div className='inner-holder' id='inner-inbox'>
-                <div className='map-wrap' id='inbox-map'>
+            <div className='inner-holder' id='inner-outbox'>
+                <div className='map-wrap' id='outbox-map'>
                     {messages.length > 0 ? (
                         messages.map((message) => (
                             <Message key={message.id} message={message}/>
@@ -95,4 +95,4 @@ const Inbox = ({activeUser}) => {
   )
 }
 
-export default Inbox
+export default Outbox;

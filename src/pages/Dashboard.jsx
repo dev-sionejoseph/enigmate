@@ -17,9 +17,9 @@ const Dashboard = ({ setAuth, activeUser }) => {
                 </div>
                 <div className='title-wrap'>
                     <h2 id='title'>{activeUser.username.charAt(0).toUpperCase() + activeUser.username.slice(1)}'s Dashboard</h2>
-                    </div>
+                </div>
             </div>
-            <div id='dash-buttonwrap'>
+            <div className="inner-holder" id='dash-buttonwrap'>
                 <Link to={`/${username}/inbox`}>
                     <button className='dash-button'>
                         <span className="dupe-text">&%j@k</span>
