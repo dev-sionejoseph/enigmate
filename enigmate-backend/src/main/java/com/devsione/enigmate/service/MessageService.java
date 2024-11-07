@@ -26,11 +26,19 @@ public class MessageService {
         this.cipherService = cipherService;
     }
 
-    public List<Message> findBySender(Long senderId){
+    public List<MessageDTO> findBySender(Long senderId){
         User sender = userService.findById(senderId).orElse(null);
-        List<Message> outbox = new ArrayList<>();
+        List<MessageDTO> outbox = new ArrayList<>();
         if (sender != null) {
-           outbox = messageRepository.findBySender(sender);
+            outbox = messageRepository.findBySender(sender).stream()
+                    .map(message -> new MessageDTO(
+                            message.getId(),
+                            message.getSender().getUsername(),
+                            message.getReceiver().getUsername(),
+                            message.getCipher().getName(),
+                            message.getEncodedMessage(),
+                            message.getDateCreated()
+                    )).collect(Collectors.toList());
         }
         return outbox;
     }

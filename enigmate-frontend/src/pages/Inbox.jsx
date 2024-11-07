@@ -63,7 +63,7 @@ const Inbox = ({activeUser}) => {
                 <h2 id='title'>Inbox</h2>
             </div>
             <div className='inner-holder' id='inner-inbox'>
-                <div className='map-wrap' id='inbox-map'>
+                <div className='map-wrap container' id='inbox-map'>
                     {messages.length > 0 ? (
                         messages.map((message) => (
                             <Message key={message.id} message={message}/>
@@ -72,12 +72,12 @@ const Inbox = ({activeUser}) => {
                         <p>Let's Get Cryptic</p>
                     )}
                 </div>
-                <div className="form-wrap">
+                <div className="form-wrap container">
                     <form>
                         <label className="form-title">Send a new message</label>
                         <select onChange={handleChange} name="cipher" id="permittedCiphers" placeholder='cipher'>
                             <option value=''>Choose a Cipher</option>
-                            <option value='cipher two'>cipher two</option>
+                            <option value='parsletongue'>Parsletongue</option>
                         </select>
                         <input onChange={handleChange} type="text" name='receiver' placeholder='To:'></input>
                         <input onChange={handleChange} type="text" name='rawMessage' placeholder='Start a New Message'></input>
@@ -87,8 +87,7 @@ const Inbox = ({activeUser}) => {
                 <Link to={`/dashboard`}>
                     <button>Back to Dashboard</button>
                 </Link>
-            </div>
-            
+            </div>    
         </div>
 
     </div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Cipher = ({ cipher, key }) => {
   return (
-    <div id={key}>
+    <div className='map-item' id={key}>
         <h4>{cipher.name}</h4>
         {/* <div>{cipher.codebreakers.map((breaker)=><p>{breaker.username}</p>)}</div> */}
         {/* <small>created by {cipher.codemaker}</small> */}

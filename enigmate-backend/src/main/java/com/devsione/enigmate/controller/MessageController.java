@@ -32,7 +32,7 @@ public class MessageController {
     }
 
     @GetMapping("{userId}/outbox")
-    List<Message> outbox(@PathVariable Long userId){
+    List<MessageDTO> outbox(@PathVariable Long userId){
         return messageService.findBySender(userId);
     }
 
@@ -40,5 +40,10 @@ public class MessageController {
     @PostMapping("{userId}/send")
     Message sendMessage(@Valid @RequestBody MessageDTO messageDTO){
         return messageService.sendMessage(messageDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    void delete(@PathVariable Long id){
+        messageService.delete(id);
     }
 }

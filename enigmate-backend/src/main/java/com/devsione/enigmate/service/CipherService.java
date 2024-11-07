@@ -37,10 +37,10 @@ public class CipherService {
             Optional<User> foundUser = Optional.ofNullable(userService.findByUsername(username));
             foundUser.ifPresent(codebreakers::add);
         }
-        User user = userService.findById(cipherDTO.getUserId()).orElseThrow(() -> new RuntimeException("Codemaker not found"));
+        User codemaker = userService.findById(cipherDTO.getUserId()).orElseThrow(() -> new RuntimeException("Codemaker not found"));
         String name = cipherDTO.getName();
         String key = cipherDTO.getKey();
-        Cipher cipher = new Cipher(name, key, user);
+        Cipher cipher = new Cipher(name, key, codemaker);
         cipher.setCodebreakers(codebreakers);
         cipherRepository.save(cipher);
     }

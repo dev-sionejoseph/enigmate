@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CreateCipher = ({ activeUser }) => {
     const [] = useState('')
@@ -53,18 +53,36 @@ const CreateCipher = ({ activeUser }) => {
       }
 
   return (
-    <div className='loginContainer'>
-        <div className="titleContainer">
-            <div className="title">Create A New Cipher</div>
-            <small>keep your key somewhere safe!</small>
+    <div className='main-wrapper gradient-overlay'>
+        <div className="item-holder">
+            <div className='logo'>
+                <img className="icon" src={"/icon.png"} alt="enigmate icon"/>
+                <img className="wordmark" src={"/wordmark1.png"} alt="enigmate wordmark"/>
+            </div>
+            <div className='title-wrap'>
+                <h2 id="title">Create A New Cipher</h2>
+                <small>keep your key somewhere safe!</small>
+            </div>
+            <div className="inner-holder" id="inner-cipher-create">
+              <div className="form-wrap" id='cipher-form-wrap'>
+                <form onSubmit={handleSubmit} className="cipher-form">
+                    <input onChange={handleChange} name="name" placeholder="Cipher Name" id="cipher-name-input" />
+                    <input onChange={handleChange} type="password" placeholder="Secret Key" name="key" id="key-input" />
+                    <label className='errorLabel'>{addError}</label>
+                    <input onChange={handleChange} type='text' placeholder='Enter Codebreakers' name="codebreakers" />
+                    <input className="submit-btn" type="submit" value="Create" />
+                </form>
+              </div>
+              <div className="link-wrap">
+                    <Link to={`/${activeUser.username}/ciphers/`}>
+                        <button>Back to Ciphers</button>
+                    </Link>
+                    <Link to={`/dashboard`}>
+                        <button>Back to Dashboard</button>
+                    </Link>
+                </div>
+            </div>
         </div>
-        <form onSubmit={handleSubmit} className="cipherForm">
-            <input onChange={handleChange} name="name" placeholder="Cipher Name" id="cipher-name-input" />
-            <input onChange={handleChange} type="password" placeholder="Secret Key" name="key" id="key-input" />
-            <label className='errorLabel'>{addError}</label>
-            <input onChange={handleChange} type='text' placeholder='Enter Codebreakers' name="codebreakers" />
-            <input type="submit" value="Create" />
-        </form>
     </div>
   )
 }

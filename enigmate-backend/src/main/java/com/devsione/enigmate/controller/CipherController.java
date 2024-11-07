@@ -37,6 +37,7 @@ public class CipherController {
     void createCipher(@Valid @RequestBody CipherDTO cipherDTO){
         cipherService.createCipher(cipherDTO);
     }
+
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/{name}/codebreakers")
     void addCodebreakers(@Valid @RequestBody CodebreakerDTO codebreakerDTO){

@@ -13,7 +13,7 @@ const Outbox = ({activeUser}) => {
     const apiURL = import.meta.env.VITE_API_KEY;
 
     useEffect(() => {
-    /*   async function fetchOutbox() {
+      async function fetchOutbox() {
         try {
             const response = await fetch(`${apiURL}/messages/${activeUser.id}/outbox`, {
                 method: "GET",
@@ -26,7 +26,7 @@ const Outbox = ({activeUser}) => {
         }
       }
       
-      fetchInbox(); */
+      fetchOutbox();
     }, [])
 
     function handleChange(e) {
@@ -63,7 +63,7 @@ const Outbox = ({activeUser}) => {
                 <h2 id='title'>Outbox</h2>
             </div>
             <div className='inner-holder' id='inner-outbox'>
-                <div className='map-wrap' id='outbox-map'>
+                <div className='map-wrap container' id='outbox-map'>
                     {messages.length > 0 ? (
                         messages.map((message) => (
                             <Message key={message.id} message={message}/>

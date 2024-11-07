@@ -7,6 +7,10 @@ const Dashboard = ({ setAuth, activeUser }) => {
     }, [])
     
     const username = activeUser.username
+
+    function handleLogout(){
+        setAuth(false);
+    }
   return (
     <main className='main-wrapper gradient-overlay'>
         <div className='item-holder'>
@@ -36,6 +40,12 @@ const Dashboard = ({ setAuth, activeUser }) => {
                     <button className='dash-button'>
                         <span className="dupe-text">X$#kE+v</span>
                         <span className="real-text">Ciphers</span>
+                    </button>
+                </Link>
+                <Link to={`/`}>
+                    <button onClick={handleLogout} className='dash-button'>
+                        <span className="dupe-text">Kfo Y#tr</span>
+                        <span className="real-text">Log Out</span>
                     </button>
                 </Link>
             </div>
