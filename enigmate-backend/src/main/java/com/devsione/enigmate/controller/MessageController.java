@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin({"http://localhost:5173", "https://enigmate-7h4b.onrender.com", "https://enigmate.quest"})
 @RestController
 @RequestMapping("api/messages")
 public class MessageController {

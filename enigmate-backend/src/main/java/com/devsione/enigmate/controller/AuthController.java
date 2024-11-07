@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/auth")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"http://localhost:5173", "https://enigmate-7h4b.onrender.com", "https://enigmate.quest"})
 public class AuthController {
     private final UserService userService;
 
