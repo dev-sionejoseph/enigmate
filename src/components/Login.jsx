@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = ({ setAuth,setActiveUser }) => {
     const [loginError, setLoginError] = useState('')
+    const [signUp, setSignUp] = useState(false)
     const [credentials, setCredentials] = useState({
         username:'',
         password:''
@@ -10,8 +11,7 @@ const Login = ({ setAuth,setActiveUser }) => {
     const navigate = useNavigate();
     const apiURL = import.meta.env.VITE_API_KEY;
 
-    async function handleSubmit(e){
-    
+    async function handleLogin(e){
         e.preventDefault();
         try {
           const response = await fetch(`${apiURL}/auth`, {
@@ -38,6 +38,33 @@ const Login = ({ setAuth,setActiveUser }) => {
         }
     }
 
+    async function handleSignUp(e) {
+      e.preventDefault();
+      try {
+        const response = await fetch(`${apiURL}/users/register`, {
+          method: "POST",
+          headers: {"Content-type": "application/json"},
+          body: JSON.stringify(credentials),
+        });
+  
+        if(response.ok) {
+          handleLogin(e);
+        } else {
+          setSignUp(false)
+          setCredentials({
+            username:'',
+            password:''
+        })
+          setLoginError('Sign up failed. Please try again')
+          throw new Error("Unable to create user");
+        }
+        
+      } catch (error) {
+        console.log("error logging in", error);
+      }
+      
+    }
+
     function handleChange(e) {
         const { name, value } = e.target;
         setCredentials({
@@ -59,7 +86,7 @@ const Login = ({ setAuth,setActiveUser }) => {
             </h2>
           </div>
         <div className="form-wrap">
-          <form onSubmit={handleSubmit} className="login-form" id="login-form">
+          <form onSubmit={handleLogin} className="login-form" id="login-form">
             <input
               onChange={handleChange}
               name="username"
@@ -74,10 +101,17 @@ const Login = ({ setAuth,setActiveUser }) => {
               id="password-input"
             />
             <label className="errorLabel">{loginError}</label>
-            <div className="form-btns-wrap" id="login-form-btns">
-              <input className="form-btns" type="submit" value="Log In" />
-              <input className="form-btns" type="button" value="Sign Up" />
-            </div>
+            {!signUp &&
+              <div className="form-btns-wrap" id="login-form-btns">
+                <input className="form-btns" type="submit" value="Log In" />
+                <input onClick={() => setSignUp(true)}className="form-btns" type="button" value="Sign Up" />
+              </div>
+            }
+            {signUp &&
+              <div className="form-btns-wrap" id="login-form-btns">
+                <input onClick={handleSignUp} className="submit-user" type="button" value="Submit" />
+              </div>
+            }
           </form>
         </div>
       </div>
