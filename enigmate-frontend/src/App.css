@@ -1,3 +1,7 @@
+*{
+  background-color: none;
+  color: black;
+}
 .app{
   margin: 0 auto;
   text-align: center;
