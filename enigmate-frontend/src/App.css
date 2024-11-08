@@ -1,10 +1,11 @@
-input, button, div, p{
+input, button, p{
   background-color: white;
   color: black;
 }
 
-div{
+div {
   background-color: none;
+  color: black;
 }
 
 .app{
